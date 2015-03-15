@@ -359,7 +359,7 @@ class SearchHandler(webapp.RequestHandler):
         #self.response.out.write(results)
         count=0
         for result in results:
-            searchlist.insert(count, result )
+            searchlist.insert(count, result.field('company').value )
             count=count+1
         #self.response.out.write(searchlist)
         doRender(self,'Search.htm',{'results':searchlist})
