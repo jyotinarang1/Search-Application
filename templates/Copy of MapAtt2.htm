@@ -1,0 +1,83 @@
+
+{% extends "_base.htm" %}
+{% block bodycontent %}
+      <h1>Map Attribute</h1>
+      <p>
+      Please enter your Product Category below:
+      </p>
+      <p>
+      
+        <div id="drop-down-values_1"></div>      
+          
+      </p> 
+      
+      
+      <p id="demo"></p>
+      
+             <p>
+      Please enter your Product Attribute below:
+      </p> 
+      <p>
+      
+        <div id="drop-down-values_2"></div>      
+          
+      </p>  
+      
+      
+      <p>
+      Please enter Attribute Types below:
+      </p>
+      
+      
+      <form method="post" action="/MapAtt1">
+      
+      Type 1:<input type="text" name="Type_1"/> 
+       <br>
+      Type 2: <input type="text" name="Type_2"/> <br/>
+    Type 3: <input type="text" name="Type_3"/> <br/>       Type 4: <input type="text" name="Type_4"/> <br/>     Type 5: <input type="text" name="Type_5"/> <br/>     Type 6: <input type="text" name="Type_6"/> <br/>     Type 7: <input type="text" name="Type_7"/> <br/>           Type 8: <input type="text" name="Type_8"/> <br/>      Type 9: <input type="text" name="Type_9"/> <br/>      Type 10: <input type="text" name="Type_10"/> <br/>   <input type="submit" value="Create"/> 
+      <input type="submit" value="Cancel" 
+          onclick="window.location='/'; return false;"/>
+      </form>    
+     
+      <script>
+      function loadOptions(){
+       $.ajax({
+               url : "/MapAtt1Cat",
+               cache: false,
+                            
+               success: function(html){
+                 
+                 
+                 $("#drop-down-values_1").html(html);
+                 }
+                   
+             });
+             setTimeout( 'loadOption()',8000);  
+             }
+             loadOptions();
+             
+    function myFunction(){
+    var y=document.getElementById("mySelect").value;      
+    alert(y)
+             
+                         
+          
+     if(y){ 
+      {
+       $.ajax({
+               url : "/MapAtt1Att",
+               data : {Category:y},
+               cache: false,
+               success: function(html){
+                 $("#drop-down-values_2").html(html)
+              }    
+             });
+               
+             
+            } 
+            
+       }    
+    }       
+            
+      </script>       
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends "_base.htm" %}
+{% block bodycontent %}
+      <h1>Map Attribute</h1>
+      <p>
+      Please enter your Product Category below:
+      </p>
+      <p>
+      
+        <div id="drop-down-values_1">Loading</div>      
+      	
+      </p> 
+      
+      
+      
+      
+             <p>
+      Please enter your Product Attribute below:
+      </p> 
+      <p>
+      
+        <div id="drop-down-values_2">Loading</div>      
+      	
+      </p> 
+       <p>
+      Please enter  Types of Attribute below:
+      </p>
+           
+    <script type="text/javascript">
+      
+      function loadOptions(){
+       $.ajax({
+               url : "/MapAtt1Cat",
+               cache: false,
+                            
+               success: function(html){
+                 
+                 
+                 $("#drop-down-values_1").html(html);
+                 }
+               	
+             });
+             setTimeout( 'loadOptions()',8000);  
+             }
+             loadOptions();
+             
+    function myFunction(){
+    var x=document.getElementById("mySelect").value;
+       
+    alert(x);
+             
+                         
+          
+     if(x){ 
+      {
+       $.ajax({
+               url : "/MapAtt1Att",
+               data : {Category:x},
+               cache: false,
+               success: function(html){
+                 $("#drop-down-values_2").html(html);
+              }	
+             });
+               
+             
+            } 
+            
+       }    
+    }
+    function myFunction_1(){
+    var a=document.getElementById("mySelect_1").value;
+    
+    $.ajax({
+               url : "/MapAtt1Att",
+               data : {Attribute:a},
+               cache: false,
+               success: function(html){
+                 $("#drop-down-values_2").html(html);
+              }	
+             });
+               
+             
+            } 
+         
+    alert(a);       
+       
+    }       
+      </script>       
+    
+      {% endblock %}

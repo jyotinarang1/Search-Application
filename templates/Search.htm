@@ -1,0 +1,16 @@
+
+{% extends "_base.htm" %}
+{% block bodycontent %}
+      <h1>Search</h1>
+  <form name="searchform" action="/search" method="post" align="center">
+   <input type="text" name="search_text">
+   <input type="Submit" value="Search" style="background-color:#dde"> 
+    </form>
+ <h1>Search Results</h1>
+{% for res in results %}
+ {{res}}
+{% endfor %} 
+     
+{% endblock %}
+
+

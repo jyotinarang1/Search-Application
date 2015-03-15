@@ -1,0 +1,37 @@
+{% extends "_base.htm" %}
+{% block bodycontent %}
+      <h1>Map Attribute</h1>
+      <p>
+      Please enter your information below:
+      </p>
+      <form method="get" action="/MapAtt1Cat">
+      <input type="submit" value="Create"/>
+     <input type="submit" value="Cancel" 
+          onclick="window.location='/'; return false;"/>
+       </form>
+         <p>
+      <select id= "Selfitem">
+      		</select>
+      </p>
+       <script>
+       $(document).ready(function()
+       {for ( var i=1 ; i<10; i++){
+       var itemval= '<option value='+i+'>'+i+'</option>';
+       $ ( "#Selfitem").append(itemval);
+       }});
+       </script>
+     
+     
+      <script>
+      function loadOptions(){
+       $.ajax({
+               url : "/MapAtt",
+               cache: false,
+               success: function(html){
+                 $("#drop-down-values").html("testing ajax")
+              }	
+             });
+             }
+             loadOptions();
+             </script>    
+{% endblock %}

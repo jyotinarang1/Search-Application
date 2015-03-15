@@ -1,0 +1,22 @@
+{% extends "_base.htm" %}
+{% block bodycontent %}
+      <h1>Map New Category</h1>
+      <p>
+      Please enter your information below:
+      </p>
+      <form method="post" action="/MapCat">
+      Category: <input type="text" name="Category"/> <br/>
+      Attribute 1:<input type="text" name="Attribute_1"/> 
+       <br>
+      Attribute 2: <input type="text" name="Attribute_2"/> <br/>
+    Attribute 3: <input type="text" name="Attribute_3"/> <br/>       Attribute 4: <input type="text" name="Attribute_4"/> <br/>     Attribute 5: <input type="text" name="Attribute_5"/> <br/>     Attribute 6: <input type="text" name="Attribute_6"/> <br/>     Attribute 7: <input type="text" name="Attribute_7"/> <br/>           Attribute 8: <input type="text" name="Attribute_8"/> <br/>      Attribute 9: <input type="text" name="Attribute_9"/> <br/>      Attribute 10: <input type="text" name="Attribute_10"/> <br/>   <input type="submit" value="Create"/> 
+      <input type="submit" value="Cancel" 
+          onclick="window.location='/'; return false;"/>
+      </form>
+      </p>
+      {% if error %}
+       <p>
+       {{ error }}
+       </p>
+      {% endif %}
+{% endblock %}

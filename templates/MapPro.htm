@@ -1,0 +1,174 @@
+
+{% extends "_base.htm" %}
+{% block bodycontent %}
+      <h1>Map Products</h1>
+      <p>
+      Please enter your Product Category below:
+      </p>
+      <p>
+      
+        <div id="drop-down-values_1"></div>      
+          
+      </p> 
+      
+      
+      
+      
+             <p>
+      Please enter your Product Attribute Type below:
+      </p> 
+      <p>
+      
+        <div id="drop-down-values_2" class = "Classname"></div>      
+          
+      </p> 
+      
+      <p>
+      Please get values of Attributes and then Map Attribute Types:
+      </p> 
+      
+       <select name=ValAtt id="ValAttribute" onchange= "myValue()" >
+ 
+ 
+          <option >No Values</option>
+          <option >Show Values</option> 
+  
+        </select>
+        
+               <select name=ValMap id="ValMap" onchange= "myMap()" >
+ 
+ 
+          <option >No Map</option>
+          <option >Map Document</option> 
+  
+        </select>
+  
+  
+  
+  
+  
+      
+      
+      <p>
+      Please enter Product Manufacturer below:
+      
+      </p>
+      
+      
+      
+      
+      <form method="post" action="/MapPro">
+      Category:<input type="text" id="Category" name="Category" value="{{category}}"/> 
+       <br>
+           pid:<input type="text" id="pid" name="pid" value="{{pid}}"/> 
+       <br>
+      Attribute_1:<input type="text" id="Attribute_1" name="Attribute_1" value="{{Attribute_1}}" /> 
+       <br>
+       Attribute_2:<input type="text"id="Attribute_2" name="Attribute_2" value="{{Attribute_2}}"/> <br/>
+    Attribute_3: <input type="text" id="Attribute_3" name="Attribute_3" value="{{Attribute_3}}"/> <br/>  
+         Attribute_4: <input type="text" id="Attribute_4" name="Attribute_4" value="{{Attribute_4}}"/> <br/>  
+            Attribute_5: <input type="text" id="Attribute_5" name="Attribute_5" value="{{Attribute_5}}"/> <br/>   
+              Attribute_6: <input type="text" id="Attribute_6" name="Attribute_6" value="{{Attribute_6}}"/> <br/>   
+                Attribute_7: <input type="text" id="Attribute_7" name="Attribute_7" value="{{Attribute_7}}"/> <br/>        
+                   Attribute_8: <input type="text" id="Attribute_8" name="Attribute_8" value="{{Attribute_8}}"/> <br/> 
+                        Attribute_9: <input type="text" id="Attribute_9" name="Attribute_9" value="{{Attribute_9}}"/> <br/>  
+                            Attribute_10: <input type="text" id="Attribute_10" name="Attribute_10" value="{{Attribute_10}}"/> <br/>
+                            Company: <input type="text" id=Company name="Company" value="{{Company}}"/> <br/>   
+       <input type="submit" value="Create"/>
+       <input type="submit" value="Cancel" 
+          onclick="window.location='/'; return false;"/>
+      </Form>
+      
+          
+     
+      <script>
+      function loadOptions(){
+       $.ajax({
+               url : "/MapProCat",
+               cache: false,
+                            
+               success: function(html){
+                 
+                 
+                 $("#drop-down-values_1").html(html);
+                 }
+                   
+             });
+             setTimeout( 'loadOption()',8000);  
+             }
+             loadOptions();
+             
+    function myFunction(){
+    var y=document.getElementById("mySelect").value;
+    document.getElementById("Category").value = y;      
+    
+             
+                         
+          
+    
+       $.ajax({
+               url : "/MapProAtt",
+               data : {Category:y},
+               cache: false,
+               success: function(html){
+                 $("#drop-down-values_2").html(html)
+              }    
+             });
+      
+  
+            } 
+       
+         
+     function myValue(){
+       
+       for(i=1; i<12; i++){
+       
+       var x=document.getElementById(i).value;
+       
+       z=10+i;
+       a=30+i;
+       
+       var y=document.getElementById("mySelect").value;
+             
+               $.ajax({
+               url : "/MapProAttTab",
+               data : {Category:y, Attribute:x,myAtt:a,},
+               cache: false,
+               async:false,
+                  
+             }).done(function(html){
+             $("#"+"drop-down-values_"+z).html(html);
+               
+             });              
+         }                      
+          
+            } 
+            
+             function myMap(){
+       var b=document.getElementById(31).value;
+    document.getElementById("Attribute_1").value = b; 
+         var b=document.getElementById(32).value;
+    document.getElementById("Attribute_2").value = b;
+         var b=document.getElementById(33).value;
+    document.getElementById("Attribute_3").value = b;
+         var b=document.getElementById(34).value;
+    document.getElementById("Attribute_4").value = b;
+         var b=document.getElementById(35).value;
+    document.getElementById("Attribute_5").value = b;
+         var b=document.getElementById(36).value;
+    document.getElementById("Attribute_6").value = b;
+         var b=document.getElementById(37).value;
+    document.getElementById("Attribute_7").value = b;
+         var b=document.getElementById(38).value;
+    document.getElementById("Attribute_8").value = b;
+         var b=document.getElementById(39).value;
+    document.getElementById("Attribute_9").value = b;
+         var b=document.getElementById(40).value;
+    document.getElementById("Attribute_10").value = b;}
+          
+     
+    
+          
+             
+    </script>       
+{% endblock %}

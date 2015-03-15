@@ -1,0 +1,28 @@
+
+
+
+
+
+
+ <select id="{{myAtt}}" onchange= "myResponse()" style="width:120px;">
+
+ 
+  {% for cat in Category_list %}
+     <option value="{{cat.Type_1}}">{{cat.Type_1}}</option> 
+     <option value="{{cat.Type_2}}">{{cat.Type_2}}</option>
+     <option value="{{cat.Type_3}}">{{cat.Type_3}}</option> 
+     <option value="{{cat.Type_4}}">{{cat.Type_4}}</option>
+     <option value="{{cat.Type_5}}">{{cat.Type_5}}</option>
+     <option value="{{cat.Type_6}}">{{cat.Type_6}}</option>
+     <option value="{{cat.Type_7}}">{{cat.Type_7}}</option> 
+     <option value="{{cat.Type_8}}">{{cat.Type_8}}</option>
+     <option value="{{cat.Type_9}}">{{cat.Type_9}}</option>
+     <option value="{{cat.Type_10}}">{{cat.Type_10}}</option>        
+   
+  {%endfor%}
+  
+  
+   
+  </select>
+
+       		

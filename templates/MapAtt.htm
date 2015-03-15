@@ -1,0 +1,37 @@
+{% extends "_base.htm" %}
+{% block bodycontent %}
+      <h1>Map Attribute</h1>
+      <p>
+      Please enter your information below:
+      </p>
+      <form method="post" action="/MapAtt">
+      Category:
+       <select name="cat_att" id="drop-down-values" >
+       {% for cat in category_list %}
+       <option  value = "{{cat.Category}}">{{cat.Category}}</option>
+       {% endfor %} 
+      </select>
+     
+      <input type="submit" value="Create"/> 
+      <input type="submit" value="Cancel" 
+          onclick="window.location='/'; return false;"/>
+      </form>
+      </p>
+      {% if error %}
+       <p>
+       {{ error }}
+       </p>
+      {% endif %}
+      <script>
+      function loadOptions(){
+       $.ajax({
+               url : "/MapAtt",
+               cache: false,
+               success: function(html){
+                 $("#drop-down-values").html("testing ajax")
+              }	
+             });
+             }
+             loadOptions();
+             </script>    
+{% endblock %}
